@@ -89,13 +89,13 @@ function randomColor() {
 
 <style scoped>
 .container {
-  position: absolute;
+  position: fixed;
   /* border: 1px solid red; */
+  z-index: -100;
 }
 #canvas {
   /* background-color: burlywood; */
   position: absolute;
-  z-index: 100;
-  opacity: 0.2;
+  opacity: 0.3;
 }
 </style>

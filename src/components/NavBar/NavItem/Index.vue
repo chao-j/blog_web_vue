@@ -21,7 +21,9 @@ export default {
   data() {
     return {};
   },
-
+  methods:{
+    
+  },  
   props: {
     name: { type: String, default: "路由" },
     icon: { type: String, default: "md-bookmark" },
