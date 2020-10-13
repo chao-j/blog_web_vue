@@ -3,17 +3,31 @@
     <NavBar :list="navList"></NavBar>
     <GraphBG></GraphBG>
     <InfoCard></InfoCard>
-    <NoteList class="list-card" :list="noteList" title="最近"></NoteList>
-    <NoteList class="list-card" :list="noteList" title="最近"></NoteList>
+    <NoteList
+      class="list-card"
+      :list="noteList"
+      title="最近"
+      type="all"
+    ></NoteList>
+    <NoteList
+      class="list-card"
+      :list="noteList"
+      title="最近"
+      type="target"
+    ></NoteList>
     <!-- <p v-for="n of 100" :key="n">{{n}}</p> -->
-
+    <footer>
+      <a href="http://www.zhaocj.top">www.zhaocj.top</a>
+      <a href="http://www.beian.miit.gov.cn/">黔ICP备19013356号</a>
+    </footer>
   </div>
 </template>
 <script>
 import GraphBG from "../components/GraphBG";
 import NavBar from "../components/NavBar";
-import InfoCard from "../components/InfoCard"
-import NoteList from "../components/NoteList"
+import InfoCard from "../components/InfoCard";
+import NoteList from "../components/NoteList";
+import axios from "axios";
 export default {
   name: "Home",
   data() {
@@ -25,13 +39,27 @@ export default {
         { name: "作品", icon: "md-code", to: "/" },
         { name: "GitHub", icon: "logo-github", to: "/" }
       ],
-      noteList:[
-            {title:'Vue-组件基础',tag:'Vue',desc:'HTML + CSS + JS + Vue，博主将收集到的前端学习网盘资源汇总成了可以搜索的列表。点击链接，就会同时将密码复制到剪切板，直接粘贴即可。'},
-            {title:'作用域和闭包',tag:'JavaScript',desc:'HTML + CSS + JS + Vue，博主将收集到的前端学习网盘资源汇总成了可以搜索的列表。点击链接，就会同时将密码复制到剪切板，直接粘贴即可。'},
-            {title:'第三人称控制',tag:'Unity3D',desc:'HTML + CSS + JS + Vue，博主将收集到的前端学习网盘资源汇总成了可以搜索的列表。点击链接，就会同时将密码复制到剪切板，直接粘贴即可。'},
-            {title:'Vue Cli的用法',tag:'Vue',desc:'HTML + CSS + JS + Vue，博主将收集到的前端学习网盘资源汇总成了可以搜索的列表。点击链接，就会同时将密码复制到剪切板，直接粘贴即可。'}
-      ]
+      noteList: []
     };
+  },
+  mounted() {
+    axios
+      .post(this.$apiUrl + "noteInfo/getNoteList?type=all")
+      .then(res => {
+        let {
+          status,
+          data: { data, code, msg }
+        } = res;
+        if (status == 200 && code == 1001) {
+          // console.log(data);
+          this.noteList = JSON.parse(JSON.stringify(data));
+        } else {
+          this.$errorMsg(msg);
+        }
+      })
+      .catch(err => {
+        this.$errorMsg("网络请求出错");
+      });
   },
   components: {
     GraphBG,
@@ -47,8 +75,23 @@ export default {
   height: auto;
   /* background-color: aqua; */
 }
-.list-card{
+.list-card {
   width: 80%;
-  margin: 0 auto;
+  margin: 20px auto;
+}
+footer {
+  text-align: center;
+  padding: 20px 0;
+}
+footer a {
+  color: #555;
+}
+footer a::after {
+  content: "|";
+  margin: 0 1em;
+}
+footer a:last-child::after {
+  content: "";
+  margin: 0;
 }
 </style>

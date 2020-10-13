@@ -9,7 +9,7 @@
       hidden: !showNav && isXS
     }"
   >
-    <img src="../../assets/manwei-logo-light.png" class="logo" />
+    <img src="../../assets/main-logo.png" class="logo" />
     <Icon type="md-swap" v-show="isXS" color="#fff" 
     @click="toggleNav" size="20" :class="{'toggle-icon':true,'toggle-trans':!showNav}"/>
     <NavItem
@@ -128,23 +128,7 @@ export default {
   transform: translateX(5px);
   transition: all .3s;
 }
-.logo:hover{
-  animation: rotate-anim .5s;
-}
-@keyframes rotate-anim {
-  0%{
-    transform: scale(1);
-  }
-  30%{
-    transform: scale(0.5);
-  }
-  80%{
-    transform: scale(1.2);
-  }
-  100%{
-    transform: scale(1);
-  }
-}
+
 .horizontal .logo{
   width: 30px;
   height: 30px;
