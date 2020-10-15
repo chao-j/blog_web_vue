@@ -10,8 +10,14 @@
     }"
   >
     <img src="../../assets/main-logo.png" class="logo" />
-    <Icon type="md-swap" v-show="isXS" color="#fff" 
-    @click="toggleNav" size="20" :class="{'toggle-icon':true,'toggle-trans':!showNav}"/>
+    <Icon
+      type="md-swap"
+      v-show="isXS"
+      color="#fff"
+      @click="toggleNav"
+      size="20"
+      :class="{ 'toggle-icon': true, 'toggle-trans': !showNav }"
+    />
     <NavItem
       v-for="(item, index) of list"
       :key="index"
@@ -30,13 +36,17 @@ export default {
   data() {
     return {
       isXS: true,
-      showNav:false
+      showNav: false,
+      list: [
+        { name: "首页", icon: "md-planet", to: "/", disabled: true },
+        { name: "时刻", icon: "md-images", to: "/" },
+        { name: "笔记库", icon: "md-folder", to: "/NotePage" },
+        { name: "作品", icon: "md-code", to: "/" },
+        { name: "GitHub", icon: "logo-github", to: "/" }
+      ]
     };
   },
   props: {
-    list: {
-      type: Array
-    },
     light: {
       type: Boolean,
       default: false
@@ -48,24 +58,23 @@ export default {
     window.onresize = e => {
       let { clientWidth } = document.body;
       this.isXS = clientWidth < 576;
-      if(this.isXS){
-        this.showNav=false //重置一下 保证每次响应式缩小时菜单都关闭
+      if (this.isXS) {
+        this.showNav = false; //重置一下 保证每次响应式缩小时菜单都关闭
       }
-
     };
   },
-  computed:{
-    toggleColor(){
-      if(this.light){
-        return "#555555"
-      }else{
-        return this.showNav?'#ffffff':'#555555'
+  computed: {
+    toggleColor() {
+      if (this.light) {
+        return "#555555";
+      } else {
+        return this.showNav ? "#ffffff" : "#555555";
       }
     }
   },
-  methods:{
-    toggleNav(){
-      this.showNav=!this.showNav
+  methods: {
+    toggleNav() {
+      this.showNav = !this.showNav;
     }
   },
   components: {
@@ -101,7 +110,7 @@ export default {
   position: sticky;
   top: 0;
 }
-.hidden{
+.hidden {
   transform: translateX(-8.2em);
   box-shadow: none;
   /* opacity: 0; */
@@ -118,35 +127,35 @@ export default {
 }
 .horizontal .item {
   margin: auto 1em;
-  transition: all .3s;
+  transition: all 0.3s;
 }
-.horizontal .item:hover{
+.horizontal .item:hover {
   transform: translateY(5px);
-  transition: all .3s;
+  transition: all 0.3s;
 }
-.vertical .item:hover{
+.vertical .item:hover {
   transform: translateX(5px);
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
-.horizontal .logo{
+.horizontal .logo {
   width: 30px;
   height: 30px;
   margin: 0 10px 0 20px;
 }
-.vertical .logo{
+.vertical .logo {
   width: 30px;
   height: 30px;
-  margin-bottom:10px;
+  margin-bottom: 10px;
 }
-.toggle-icon{
+.toggle-icon {
   position: absolute;
   right: 0.5em;
-  top:0.5em;
+  top: 0.5em;
   transition: all 0.3s;
   z-index: 100;
 }
-.toggle-trans{
+.toggle-trans {
   transform: translateX(44px) rotateZ(180deg);
   padding: 5px;
   background-color: #555;

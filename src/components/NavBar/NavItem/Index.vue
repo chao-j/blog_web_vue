@@ -1,5 +1,5 @@
 <template>
-  <span class="container">
+  <span class="container" @click="navTo">
     <Icon
       :type="icon"
       :color="this.mode == 'light' ? '#cdc9c3' : '#555'"
@@ -21,9 +21,11 @@ export default {
   data() {
     return {};
   },
-  methods:{
-    
-  },  
+  methods: {
+    navTo() {
+      this.$router.push(this.to);
+    }
+  },
   props: {
     name: { type: String, default: "路由" },
     icon: { type: String, default: "md-bookmark" },

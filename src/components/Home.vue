@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <NavBar :list="navList"></NavBar>
+    <!-- <NavBar ></NavBar> -->
     <GraphBG></GraphBG>
     <InfoCard></InfoCard>
     <NoteList
@@ -32,13 +32,6 @@ export default {
   name: "Home",
   data() {
     return {
-      navList: [
-        { name: "首页", icon: "md-planet", to: "/", disabled: true },
-        { name: "时刻", icon: "md-images", to: "/" },
-        { name: "笔记库", icon: "md-folder", to: "/" },
-        { name: "作品", icon: "md-code", to: "/" },
-        { name: "GitHub", icon: "logo-github", to: "/" }
-      ],
       noteList: []
     };
   },

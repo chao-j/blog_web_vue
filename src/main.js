@@ -4,10 +4,12 @@ import Vue from "vue";
 import App from "./App";
 import router from "./router";
 import ViewUI from "view-design";
+import leMarkdownEditor from "le-markdown-editor";
 import "view-design/dist/styles/iview.css";
 import { ServerUtil } from "./utils/serverUtil";
 
 Vue.use(ViewUI);
+Vue.use(leMarkdownEditor);
 Vue.config.productionTip = false;
 
 Vue.prototype.$apiUrl = new ServerUtil().apiUrl;
