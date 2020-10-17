@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <!-- <NavBar ></NavBar> -->
+    <!-- <keep-alive>
+      <NavBar></NavBar>
+    </keep-alive> -->
     <GraphBG></GraphBG>
     <InfoCard></InfoCard>
     <NoteList
