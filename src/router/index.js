@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "@/components/Home";
 import NotePage from "@/components/NotePage";
+import NoteLib from "@/components/NoteLib";
 Vue.use(Router);
 
 export default new Router({
@@ -12,9 +13,9 @@ export default new Router({
       component: Home
     },
     {
-      path: "/NotePage",
-      name: "NotePage",
-      component: NotePage
+      path: "/NoteLib",
+      name: "NoteLib",
+      component: NoteLib
     }
   ]
 });

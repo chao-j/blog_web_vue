@@ -40,7 +40,7 @@ export default {
       list: [
         { name: "首页", icon: "md-planet", to: "/", disabled: true },
         { name: "时刻", icon: "md-images", to: "/" },
-        { name: "笔记库", icon: "md-folder", to: "/NotePage" },
+        { name: "笔记库", icon: "md-folder", to: "/NoteLib" },
         { name: "作品", icon: "md-code", to: "/" },
         { name: "GitHub", icon: "logo-github", to: "/" }
       ]
