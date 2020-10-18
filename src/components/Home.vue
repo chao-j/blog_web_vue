@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <!-- <NavBar ></NavBar> -->
+    <!-- <keep-alive>
+      <NavBar></NavBar>
+    </keep-alive> -->
     <GraphBG></GraphBG>
     <InfoCard></InfoCard>
     <NoteList
@@ -9,12 +11,7 @@
       title="最近"
       type="all"
     ></NoteList>
-    <NoteList
-      class="list-card"
-      :list="noteList"
-      title="最近"
-      type="target"
-    ></NoteList>
+
     <!-- <p v-for="n of 100" :key="n">{{n}}</p> -->
     <footer>
       <a href="http://www.zhaocj.top">www.zhaocj.top</a>

@@ -35,7 +35,7 @@ export default {
   name: "NavBar",
   data() {
     return {
-      isXS: true,
+      isXS: false,
       showNav: false,
       list: [
         { name: "首页", icon: "md-planet", to: "/", disabled: true },

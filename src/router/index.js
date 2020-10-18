@@ -16,6 +16,11 @@ export default new Router({
       path: "/NoteLib",
       name: "NoteLib",
       component: NoteLib
+    },
+    {
+      path: "/NotePage",
+      name: "NotePage",
+      component: NotePage
     }
   ]
 });
