@@ -24,7 +24,6 @@ export default {
   name: "NoteLib",
   data() {
     return {
-      target: "Vue",
       path: "",
       name: "",
       isShowPage: false
@@ -50,12 +49,25 @@ export default {
     // NoteFolder内部点击了笔记，打开笔记
     fileOpen(data) {
       let { path, name } = data;
+      console.log("fileOpen", data);
       this.path = path;
       this.name = name;
       this.isShowPage = true;
+    },
+    // 根据路由参数判断外部打开逻辑
+    openByOuter() {
+      let { _path: path, _name: name, isNote } = this.$route.params;
+      if (isNote) {
+        this.fileOpen({ path, name });
+      } else {
+        let p = path + "\\" + name;
+        this.pathChange(p);
+      }
     }
   },
-  mounted() {},
+  mounted() {
+    this.openByOuter();
+  },
   components: {
     NoteFolder,
     BreadCrumb,

@@ -13,6 +13,7 @@
         :title="item.private ? '没有权限' : item.alias"
         :key="index"
         :class="{ tag: true, 'tag-private': item.private }"
+        @click="onTagOpen(item)"
         ><Icon type="md-eye-off" v-if="item.private" /> {{ item.alias }}</span
       >
     </div>
@@ -30,6 +31,16 @@ export default {
       // ],
       // scrollTop:0
     };
+  },
+  methods: {
+    onTagOpen(item) {
+      this.$log.jlog(item);
+      if (item.private) {
+        this.$errorMsg("您没有权限查看该笔记");
+      } else {
+        this.$emit("onTagOpen", item);
+      }
+    }
   },
   mounted() {
     // 获取笔记分类/数量

@@ -7,12 +7,15 @@ import ViewUI from "view-design";
 import leMarkdownEditor from "le-markdown-editor";
 import "view-design/dist/styles/iview.css";
 import { ServerUtil } from "./utils/serverUtil";
-
+import LogUtil from "./utils/logUtil";
 Vue.use(ViewUI);
 Vue.use(leMarkdownEditor);
 Vue.config.productionTip = false;
 
-Vue.prototype.$apiUrl = new ServerUtil().apiUrl;
+// const env = "dev";
+const env = "prod";
+Vue.prototype.$apiUrl = new ServerUtil(env).apiUrl;
+Vue.prototype.$log = new LogUtil(env);
 Vue.prototype.$errorMsg = function(msg = "发生错误，请刷新重试") {
   this.$Message.error({
     content: msg,

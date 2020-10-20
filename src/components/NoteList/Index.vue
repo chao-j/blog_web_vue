@@ -3,14 +3,18 @@
     <div class="header">
       <Icon type="md-attach" />
       <h2 style="display:inline-block">{{ title }}</h2>
-      <span class="side-btn">
+      <span class="side-btn" @click="$emit('onMoreNote')">
         <Icon type="md-refresh" color="#ffaa71" />
         {{ type == "all" ? "换一批" : "更多" }}
       </span>
     </div>
     <ul class="note-list">
-      <li v-for="(item, index) in noteList" :key="item.title">
-        <h3>{{ `# ${index + 1}. ${item.name}` }}</h3>
+      <li
+        v-for="(item, index) in noteList"
+        :key="item.title"
+        @click="$emit('onNoteOpen', { path: item.path, name: item.name })"
+      >
+        <h3>{{ `# ${index + 1}. ${item.listName}` }}</h3>
         <!-- <p>{{ item.desc }}</p> -->
         <div>
           <Icon type="md-bookmark" color="#cdc9c3" />
@@ -39,7 +43,7 @@ export default {
     noteList() {
       if (this.type == "all") {
         this.list.forEach(e => {
-          e.name = e.name.replace(/^(\d\.)/, "");
+          e.listName = e.name.replace(/^(\d\.)/, "");
         });
       }
       return this.list;
@@ -86,6 +90,9 @@ export default {
   right: 2em;
   color: #ffaa71;
   user-select: none;
+}
+.side-btn:hover {
+  color: #555;
 }
 .note-list {
   padding: 1em 2em;

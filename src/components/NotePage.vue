@@ -49,7 +49,6 @@ export default {
     return {
       content: "### 没有获取到数据，可能出错了...",
       isMd: true,
-      path: "Vue/组件基础\\vvv",
       brother: { previous: "1.基础类型", next: "3.类型校验" },
       tag: "Vue"
     };
@@ -68,6 +67,7 @@ export default {
     noteInfo() {
       let path = this.path;
       let name = this.name;
+      console.log("==.", path, name, "---");
       this.requestNoteContent({ path, name });
       return { path: this.path, name: this.name };
     }
