@@ -11,6 +11,9 @@ export default {
   name: "App",
   components: {
     NavBar
+  },
+  mounted() {
+    this.$log.jlog(`当前环境:${this.$apiUrl}`);
   }
 };
 </script>

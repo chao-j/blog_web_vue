@@ -12,8 +12,8 @@ Vue.use(ViewUI);
 Vue.use(leMarkdownEditor);
 Vue.config.productionTip = false;
 
-// const env = "dev";
-const env = "prod";
+const env = "dev";
+// const env = "prod";
 Vue.prototype.$apiUrl = new ServerUtil(env).apiUrl;
 Vue.prototype.$log = new LogUtil(env);
 Vue.prototype.$errorMsg = function(msg = "发生错误，请刷新重试") {

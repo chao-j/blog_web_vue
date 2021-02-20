@@ -2,7 +2,7 @@ class ServerUtil {
   constructor(env = "dev") {
     this.env = env;
     this.devUrl = "http://127.0.0.1:8081/";
-    this.prodUrl = "http://www.zhaocj.top:8081/";
+    this.prodUrl = "http://www.zhaocj.top/blog_node_api/";
   }
 
   get apiUrl() {
